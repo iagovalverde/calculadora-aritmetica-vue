@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
+import Calculadora from './components/Calculadora.vue';
 
 const estado = reactive({
   operacao: '',
@@ -37,37 +38,13 @@ const atualizarNumero2 = (e) => {
 </script>
 
 <template>
-  <div class="container">
-    <h1>Calculadora Aritmética</h1>
-    <div class="calc">
-      <input @keyup="atualizarNumero1" type="number" placeholder="Digite o primeiro numero">
-      <input @keyup="atualizarNumero2" type="number" placeholder="Digite o segundo numero">
-      <select @change="atualizarOperacao">
-        <option value="soma">+</option>
-        <option value="subtracao">-</option>
-        <option value="multiplicacao">x</option>
-        <option value="divisao">/</option>
-      </select>
-      <span>
-        {{ calcularResultado() }}
-      </span>
-    </div>
-  </div>
+  <Calculadora 
+  :atualiza-numero1="atualizarNumero1" 
+  :atualiza-numero2="atualizarNumero2" 
+  :atualiza-operacao="atualizarOperacao"
+  :calcula-resultado="calcularResultado()"
+  />
 </template>
 
-<style scoped>
-  .calc, h1 {
-    text-align: center;
-  }
 
-  input, select {
-    padding: 6px;
-    font-size: 20px;
-  }
-
-  span {
-    margin-left: 12px;
-    font-size: 20px;
-  }
-</style>
 
